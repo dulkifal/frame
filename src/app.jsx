@@ -18,12 +18,14 @@ let CropArea = document.createElement("div");
 var c;
 let bg = new Image();
 
-let DocW = 1000;
+let DocW = 800;
 let DocH = 1000;
-let Cropy = 0;
-let Cropx = 0;
-let CropH = 1000;
-let CropW = 1000;
+
+let Cropy = 512;
+let Cropx = 175;
+
+let CropH = 179;
+let CropW = 178;
 
 export function App(props) {
   let file = document.createElement("input");
