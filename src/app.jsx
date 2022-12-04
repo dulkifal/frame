@@ -61,16 +61,16 @@ export function App(props) {
     if (BgLoadStatus && CroppedImgStatus) {
       _ctx.drawImage(CroppedImgTag, Cropx, Cropy,CropW,CropH);
       _ctx.drawImage(bg, 0, 0, _canv.width,  _canv.height);
-      //_ctx.font = "600 30px Roboto";
-      //_ctx.fillStyle = "white";
+      _ctx.font = "600 30px Roboto";
+      _ctx.fillStyle = "white";
 
-      //let _name = Name.toLocaleUpperCase();
+      let _name = Name.toLocaleUpperCase();
 
-      //let txtW = _ctx.measureText(_name).width;
-      //_ctx.shadowBlur = 5;
-     // _ctx.shadowColor = "black";
+      let txtW = _ctx.measureText(_name).width;
+      _ctx.shadowBlur = 5;
+     _ctx.shadowColor = "black";
 
-     // _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 2, Cropy + CropH + 160);
+     _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 4 + 125, Cropy + CropH - 80);
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
@@ -131,42 +131,43 @@ export function App(props) {
   return (
     <>
       <div
-        style={{ backgroundImage: `url(${ GeneratedData?GeneratedData:bg.src })` }}
+        style={{
+          backgroundImage: `url(${GeneratedData ? GeneratedData : bg.src})`,
+        }}
         className="Header"
       ></div>
       <div className="Cont">
         <h1></h1>
 
         <div className="Actions">
-          
-       { GeneratedData ?<div>
-            <a href={GeneratedData} download="SIBAQ PROFILE PHOTO">
-              <button>
-                <AiOutlineDownload size="30" />
-                <span>
-          Download Profile
-          </span>
+          {GeneratedData ? (
+            <div>
+              <a href={GeneratedData} download="SIBAQ PROFILE PHOTO">
+                <button>
+                  <AiOutlineDownload size="30" />
+                  <span>Download Profile</span>
+                </button>
+              </a>
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                placeholder="Type Your Name"
+                onchange={({ target }) => setName(target.value)}
+              />
+              <button
+                onClick={() => {
+                  file.click();
+               
+                }}
+              >
+                <AiOutlineCamera size="30" />
+
+                <span>Upload photo</span>
               </button>
-            </a>
-            
-         
-          </div>:
-          <button
-          onClick={() => {
-            file.click();
-          }}
-        >
-          <AiOutlineCamera size="30" />
-        
-          <span>
-          Upload photo
-          </span>
-         
-        </button>
-          }
-          
-          
-          
+            </div>
+          )}
         </div>
 
         {/* {GeneratedData && (
@@ -190,7 +191,7 @@ export function App(props) {
           }
         }}
       ></div>
-      
+
       <Preview></Preview>
       <Cropper
         setCroppedImg={setCroppedImg}
