@@ -21,8 +21,8 @@ let bg = new Image();
 let DocW = 800;
 let DocH = 1000;
 
-let Cropy = 512;
-let Cropx = 175;
+let Cropy = 524;
+let Cropx = 305;
 
 let CropH = 179;
 let CropW = 178;
@@ -70,7 +70,7 @@ export function App(props) {
       _ctx.shadowBlur = 5;
      _ctx.shadowColor = "black";
 
-     _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 4 + 125, Cropy + CropH - 80);
+     _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 2  , Cropy + CropH + 40);
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
