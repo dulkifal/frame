@@ -18,14 +18,16 @@ let CropArea = document.createElement("div");
 var c;
 let bg = new Image();
 
-let DocW = 800;
-let DocH = 1000;
+// frame size
+let DocW = 1080;
+let DocH = 1500;
 
-let Cropy = 524;
-let Cropx = 305;
+let Cropy = 730;
+let Cropx = 680;
 
-let CropH = 179;
-let CropW = 178;
+// cut size
+let CropH = 320;
+let CropW = 250;
 
 export function App(props) {
   let file = document.createElement("input");
@@ -61,7 +63,7 @@ export function App(props) {
     if (BgLoadStatus && CroppedImgStatus) {
       _ctx.drawImage(CroppedImgTag, Cropx, Cropy,CropW,CropH);
       _ctx.drawImage(bg, 0, 0, _canv.width,  _canv.height);
-      _ctx.font = "600 30px Roboto";
+      _ctx.font = "600 50px Roboto";
       _ctx.fillStyle = "white";
 
       let _name = Name.toLocaleUpperCase();
@@ -70,7 +72,7 @@ export function App(props) {
       _ctx.shadowBlur = 5;
      _ctx.shadowColor = "black";
 
-     _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 2  , Cropy + CropH + 40);
+      _ctx.fillText(_name, DocW / 4, Cropy + CropH + 100); 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
