@@ -71,8 +71,10 @@ export function App(props) {
       let txtW = _ctx.measureText(_name).width;
       _ctx.shadowBlur = 5;
      _ctx.shadowColor = "black";
+    //  calculate name length and place on center
+      _ctx.fillText(_name , (DocW - txtW) / 2, Cropy + CropH + 90);
 
-      _ctx.fillText(_name, DocW /4, Cropy + CropH + 90); 
+      // _ctx.fillText(_name, DocW /4, Cropy + CropH + 90); 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
