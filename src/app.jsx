@@ -23,7 +23,7 @@ let DocW = 1080;
 let DocH = 1320;
 
 let Cropy = 370;
-let Cropx = 171;
+let Cropx = 390;
 
 // cut size
 let CropH = 380;
@@ -72,7 +72,7 @@ export function App(props) {
       _ctx.shadowBlur = 5;
      _ctx.shadowColor = "black";
 
-      _ctx.fillText(_name, DocW /6 -40, Cropy + CropH + 90); 
+      _ctx.fillText(_name, DocW /4, Cropy + CropH + 90); 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
