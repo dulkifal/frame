@@ -20,14 +20,14 @@ let bg = new Image();
 
 // frame size
 let DocW = 1080;
-let DocH = 1500;
+let DocH = 1320;
 
-let Cropy = 730;
-let Cropx = 680;
+let Cropy = 370;
+let Cropx = 171;
 
 // cut size
-let CropH = 320;
-let CropW = 250;
+let CropH = 380;
+let CropW = 290;
 
 export function App(props) {
   let file = document.createElement("input");
@@ -72,7 +72,7 @@ export function App(props) {
       _ctx.shadowBlur = 5;
      _ctx.shadowColor = "black";
 
-      _ctx.fillText(_name, DocW / 4, Cropy + CropH + 100); 
+      _ctx.fillText(_name, DocW /6 -40, Cropy + CropH + 90); 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
@@ -144,7 +144,7 @@ export function App(props) {
         <div className="Actions">
           {GeneratedData ? (
             <div>
-              <a href={GeneratedData} download="Mandharam">
+              <a href={GeneratedData} download="MDIA sanad">
                 <button>
                   <AiOutlineDownload size="30" />
                   <span>Download Profile</span>
