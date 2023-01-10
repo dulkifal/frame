@@ -63,7 +63,7 @@ export function App(props) {
     if (BgLoadStatus && CroppedImgStatus) {
       _ctx.drawImage(CroppedImgTag, Cropx, Cropy,CropW,CropH);
       _ctx.drawImage(bg, 0, 0, _canv.width,  _canv.height);
-      _ctx.font = "600 50px Roboto";
+      _ctx.font = "400 35px Roboto";
       _ctx.fillStyle = "white";
 
       let _name = Name.toLocaleUpperCase();
