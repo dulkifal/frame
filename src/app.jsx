@@ -22,12 +22,13 @@ let bg = new Image();
 let DocW = 500;
 let DocH = 500;
 
-let Cropy = 0;
-let Cropx = 0;
+let Cropy = 20;
+let Cropx = 20;
 
 // cut size
-let CropH = 490;
-let CropW = 490;
+let CropH = 470;
+let CropW = 470;
+
 
 export function App(props) {
   let file = document.createElement("input");
