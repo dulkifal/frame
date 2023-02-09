@@ -19,15 +19,15 @@ var c;
 let bg = new Image();
 
 // frame size
-let DocW = 1080;
-let DocH = 1320;
+let DocW = 500;
+let DocH = 500;
 
-let Cropy = 370;
-let Cropx = 390;
+let Cropy = 0;
+let Cropx = 0;
 
 // cut size
-let CropH = 380;
-let CropW = 290;
+let CropH = 490;
+let CropW = 490;
 
 export function App(props) {
   let file = document.createElement("input");
@@ -63,18 +63,16 @@ export function App(props) {
     if (BgLoadStatus && CroppedImgStatus) {
       _ctx.drawImage(CroppedImgTag, Cropx, Cropy,CropW,CropH);
       _ctx.drawImage(bg, 0, 0, _canv.width,  _canv.height);
-      _ctx.font = "400 35px Roboto";
-      _ctx.fillStyle = "white";
+      //_ctx.font = "600 30px Roboto";
+      //_ctx.fillStyle = "white";
 
-      let _name = Name.toLocaleUpperCase();
+      //let _name = Name.toLocaleUpperCase();
 
-      let txtW = _ctx.measureText(_name).width;
-      _ctx.shadowBlur = 5;
-     _ctx.shadowColor = "black";
-    //  calculate name length and place on center
-      _ctx.fillText(_name , (DocW - txtW) / 2, Cropy + CropH + 90);
+      //let txtW = _ctx.measureText(_name).width;
+      //_ctx.shadowBlur = 5;
+      // _ctx.shadowColor = "black";
 
-      // _ctx.fillText(_name, DocW /4, Cropy + CropH + 90); 
+      // _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 2, Cropy + CropH + 160);
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
@@ -111,7 +109,7 @@ export function App(props) {
       viewport: {
         height: CropH/2,
         width: CropW/2,
-        type:"rectangle",
+        type:"circle",
       },
     });
   }
@@ -146,7 +144,7 @@ export function App(props) {
         <div className="Actions">
           {GeneratedData ? (
             <div>
-              <a href={GeneratedData} download="MDIA sanad">
+              <a href={GeneratedData} download="USWA">
                 <button>
                   <AiOutlineDownload size="30" />
                   <span>Download Profile</span>
@@ -155,11 +153,11 @@ export function App(props) {
             </div>
           ) : (
             <div>
-              <input
+              {/* <input
                 type="text"
                 placeholder="Type Your Name"
                 onchange={({ target }) => setName(target.value)}
-              />
+              /> */}
               <button
                 onClick={() => {
                   file.click();
