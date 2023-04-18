@@ -19,16 +19,15 @@ var c;
 let bg = new Image();
 
 // frame size
-let DocW = 500;
-let DocH = 500;
+let DocW = 1080;
+let DocH = 1080;
 
-let Cropy = 20;
-let Cropx = 20;
+let Cropy = 130;
+let Cropx = 120;
 
 // cut size
-let CropH = 470;
-let CropW = 470;
-
+let CropH = 510;
+let CropW = 363;
 
 export function App(props) {
   let file = document.createElement("input");
@@ -39,6 +38,7 @@ export function App(props) {
   const [GeneratedData, setGeneratedData] = useState(null);
   const [PreviewAct, setPreviewAct] = useState(null);
   const [Name, setName] = useState(null);
+  const [Class, setClass] = useState(null);
 
   bg.src = "./frame.png";
   bg.onload = () => {
@@ -56,24 +56,36 @@ export function App(props) {
   _canv.width = DocW;
   _canv.height = DocH;
 
-  useEffect(()=>{
-    draw()
-  },[CroppedImgStatus])
+  useEffect(() => {
+    draw();
+  }, [CroppedImgStatus]);
 
   function draw() {
     if (BgLoadStatus && CroppedImgStatus) {
-      _ctx.drawImage(CroppedImgTag, Cropx, Cropy,CropW,CropH);
-      _ctx.drawImage(bg, 0, 0, _canv.width,  _canv.height);
-      //_ctx.font = "600 30px Roboto";
-      //_ctx.fillStyle = "white";
+      _ctx.drawImage(CroppedImgTag, Cropx, Cropy, CropW, CropH);
+      _ctx.drawImage(bg, 0, 0, _canv.width, _canv.height);
 
-      //let _name = Name.toLocaleUpperCase();
+      // font  sans-serif for class only with out bold
+      _ctx.font = "40px sans-serif";
 
-      //let txtW = _ctx.measureText(_name).width;
-      //_ctx.shadowBlur = 5;
-      // _ctx.shadowColor = "black";
+      _ctx.fillStyle = "white";
+      // upper case each word
+      let _name = Name.split(" ")
+        .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
+        .join(" ");
 
-      // _ctx.fillText(_name, Cropx + CropW / 2 - txtW / 2, Cropy + CropH + 160);
+      let _class = `${Class}`;
+
+      let txtW = _ctx.measureText(_name).width;
+      let txtW2 = _ctx.measureText(_class).width;
+      _ctx.shadowBlur = 5;
+      _ctx.shadowColor = "black";
+
+      _ctx.fillText(_name, CropH + 35, CropH + 30);
+
+      _ctx.font = "35px sans-serif";
+      _ctx.fillText(_class, CropH + 35, CropH + 80);
+
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
       //console.log(_data);
@@ -103,14 +115,12 @@ export function App(props) {
     c = new Croppie(CropArea, {
       url: Img,
 
-      enableOrientation:true,
-     
-      
-      
+      enableOrientation: true,
+
       viewport: {
-        height: CropH/2,
-        width: CropW/2,
-        type:"circle",
+        height: CropH / 2,
+        width: CropW / 2,
+        type: "rectangle",
       },
     });
   }
@@ -145,7 +155,7 @@ export function App(props) {
         <div className="Actions">
           {GeneratedData ? (
             <div>
-              <a href={GeneratedData} download="USWA">
+              <a href={GeneratedData} download="MIC">
                 <button>
                   <AiOutlineDownload size="30" />
                   <span>Download Profile</span>
@@ -153,16 +163,20 @@ export function App(props) {
               </a>
             </div>
           ) : (
-            <div>
-              {/* <input
+            <div className="flex-column">
+              <input
                 type="text"
                 placeholder="Type Your Name"
                 onchange={({ target }) => setName(target.value)}
-              /> */}
+              />
+              <input
+                type="text"
+                placeholder="Type Your Class"
+                onchange={({ target }) => setClass(target.value)}
+              />
               <button
                 onClick={() => {
                   file.click();
-               
                 }}
               >
                 <AiOutlineCamera size="30" />
@@ -205,7 +219,6 @@ export function App(props) {
   );
 }
 
-
 function Cropper({ visible, set, setCroppedImg }) {
   return (
     <div className={visible ? "vi" : "hi"}>
@@ -231,7 +244,7 @@ function Cropper({ visible, set, setCroppedImg }) {
           onClick={() => {
             //CroppedImg =
 
-            c.result({size: {height: CropH, width: CropW}}).then((e) => {
+            c.result({ size: { height: CropH, width: CropW } }).then((e) => {
               setCroppedImg(e);
               c.destroy();
               set(false);
