@@ -171,7 +171,7 @@ export function App(props) {
               />
               <input
                 type="text"
-                placeholder="Type Your Class"
+                placeholder=" Your Standard or Position"
                 onchange={({ target }) => setClass(target.value)}
               />
               <button
