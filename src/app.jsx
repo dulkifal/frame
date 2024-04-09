@@ -19,15 +19,17 @@ var c;
 let bg = new Image();
 
 // frame size
-let DocW = 1080;
-let DocH = 1080;
+let DocW = 2742/2
+let DocH = 3354/2
 
-let Cropy = 130;
-let Cropx = 120;
+let Cropy = 150
+let Cropx = 190
 
-// cut size
-let CropH = 510;
-let CropW = 363;
+// // cut size
+// let CropH = 1650
+// let CropW = 1900
+let CropH = 950
+let CropW = 960
 
 export function App(props) {
   let file = document.createElement("input");
@@ -66,25 +68,25 @@ export function App(props) {
       _ctx.drawImage(bg, 0, 0, _canv.width, _canv.height);
 
       // font  sans-serif for class only with out bold
-      _ctx.font = "40px sans-serif";
+      // _ctx.font = "40px sans-serif";
 
-      _ctx.fillStyle = "white";
-      // upper case each word
-      let _name = Name.split(" ")
-        .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
-        .join(" ");
+      // _ctx.fillStyle = "white";
+      // upper case each word input 
+      // let _name = Name.split(" ")
+      //   .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
+      //   .join(" ");
 
-      let _class = `${Class}`;
+      // let _class = `${Class}`;
 
-      let txtW = _ctx.measureText(_name).width;
-      let txtW2 = _ctx.measureText(_class).width;
-      _ctx.shadowBlur = 5;
-      _ctx.shadowColor = "black";
+      // let txtW = _ctx.measureText(_name).width;
+      // let txtW2 = _ctx.measureText(_class).width;
+      // _ctx.shadowBlur = 5;
+      // _ctx.shadowColor = "black";
 
-      _ctx.fillText(_name, CropH + 35, CropH + 30);
+      // _ctx.fillText(_name, CropH + 35, CropH + 30);
 
-      _ctx.font = "35px sans-serif";
-      _ctx.fillText(_class, CropH + 35, CropH + 80);
+      // _ctx.font = "35px sans-serif";
+      // _ctx.fillText(_class, CropH + 35, CropH + 80);
 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
@@ -118,8 +120,8 @@ export function App(props) {
       enableOrientation: true,
 
       viewport: {
-        height: CropH / 2,
-        width: CropW / 2,
+        height: CropH/2 ,
+        width: CropW /2,
         type: "rectangle",
       },
     });
@@ -155,7 +157,7 @@ export function App(props) {
         <div className="Actions">
           {GeneratedData ? (
             <div>
-              <a href={GeneratedData} download="MIC">
+              <a href={GeneratedData} download="EID">
                 <button>
                   <AiOutlineDownload size="30" />
                   <span>Download Profile</span>
@@ -164,7 +166,8 @@ export function App(props) {
             </div>
           ) : (
             <div className="flex-column">
-              <input
+            {/* name */}
+              {/* <input
                 type="text"
                 placeholder="Type Your Name"
                 onchange={({ target }) => setName(target.value)}
@@ -173,7 +176,7 @@ export function App(props) {
                 type="text"
                 placeholder=" Your Standard or Position"
                 onchange={({ target }) => setClass(target.value)}
-              />
+              /> */}
               <button
                 onClick={() => {
                   file.click();
