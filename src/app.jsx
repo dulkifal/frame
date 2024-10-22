@@ -81,17 +81,17 @@ export function App(props) {
 
       let txtW = _ctx.measureText(_name).width;
       let txtW2 = _ctx.measureText(_class).width;
-      _ctx.shadowBlur = 5;
-      _ctx.shadowColor = "black";
+      // _ctx.shadowBlur = 5;
+      // _ctx.shadowColor = "black";
 
       // place name and class in center
       _ctx.textAlign = "center"; 
 // font size and type montrast semi bold
 
 
-      _ctx.font = " 600 40px Montserrat, sans-serif";
+      _ctx.font = " 600 34px Montserrat, sans-serif";
       _ctx.fillText(_name,Cropy  + CropW /4 - txtW /2  , Cropy + CropH  + 50);
-      _ctx.font = "33px Montserrat, sans-serif";
+      _ctx.font = "29px Montserrat, sans-serif";
 
       _ctx.fillText(_class, Cropy +  CropW /4  - txtW2 /2, Cropy + CropH  + 95  );
 
