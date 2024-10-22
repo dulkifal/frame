@@ -19,17 +19,18 @@ var c;
 let bg = new Image();
 
 // frame size
-let DocW = 2742/2
-let DocH = 3354/2
+let DocW = 1080 
+let DocH = 1148 
 
-let Cropy = 150
-let Cropx = 190
+// start point
+let Cropy = 515  
+let Cropx = 430 
 
 // // cut size
 // let CropH = 1650
 // let CropW = 1900
-let CropH = 950
-let CropW = 960
+let CropH = 380    
+let CropW = 275  
 
 export function App(props) {
   let file = document.createElement("input");
@@ -68,25 +69,31 @@ export function App(props) {
       _ctx.drawImage(bg, 0, 0, _canv.width, _canv.height);
 
       // font  sans-serif for class only with out bold
-      // _ctx.font = "40px sans-serif";
+      
 
-      // _ctx.fillStyle = "white";
+      _ctx.fillStyle = "white";
       // upper case each word input 
-      // let _name = Name.split(" ")
-      //   .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
-      //   .join(" ");
+      let _name = Name.split(" ")
+        .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
+        .join(" ");
 
-      // let _class = `${Class}`;
+      let _class = `${Class}`;
 
-      // let txtW = _ctx.measureText(_name).width;
-      // let txtW2 = _ctx.measureText(_class).width;
-      // _ctx.shadowBlur = 5;
-      // _ctx.shadowColor = "black";
+      let txtW = _ctx.measureText(_name).width;
+      let txtW2 = _ctx.measureText(_class).width;
+      _ctx.shadowBlur = 5;
+      _ctx.shadowColor = "black";
 
-      // _ctx.fillText(_name, CropH + 35, CropH + 30);
+      // place name and class in center
+      _ctx.textAlign = "center"; 
+// font size and type montrast semi bold
 
-      // _ctx.font = "35px sans-serif";
-      // _ctx.fillText(_class, CropH + 35, CropH + 80);
+
+      _ctx.font = "40px sans-serif";
+      _ctx.fillText(_name,Cropy + CropW /3 - txtW /2  , Cropy + CropH  + 10);
+
+      _ctx.font = "36px sans-serif";
+      _ctx.fillText(_class, Cropy +  CropW /3  - txtW2 /2, Cropy + CropH  + 50  );
 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
@@ -95,7 +102,7 @@ export function App(props) {
     } else {
       console.log(BgLoadStatus, CroppedImgStatus);
     }
-  }
+  } 
 
   file.type = "file";
   let Img;
@@ -112,7 +119,7 @@ export function App(props) {
 
   function Crop() {
     // console.log(Img);
-    //crop.current.append(Img);
+    // crop.current.append(Img);
     setcropVis(true);
     c = new Croppie(CropArea, {
       url: Img,
@@ -167,16 +174,16 @@ export function App(props) {
           ) : (
             <div className="flex-column">
             {/* name */}
-              {/* <input
+               <input
                 type="text"
                 placeholder="Type Your Name"
                 onchange={({ target }) => setName(target.value)}
               />
               <input
                 type="text"
-                placeholder=" Your Standard or Position"
+                placeholder="Position"
                 onchange={({ target }) => setClass(target.value)}
-              /> */}
+              /> 
               <button
                 onClick={() => {
                   file.click();
