@@ -29,8 +29,8 @@ let Cropx = 430
 // // cut size
 // let CropH = 1650
 // let CropW = 1900
-let CropH = 380    
-let CropW = 275  
+let CropH = 320    
+let CropW = 250  
 
 export function App(props) {
   let file = document.createElement("input");
@@ -89,12 +89,11 @@ export function App(props) {
 // font size and type montrast semi bold
 
 
-      _ctx.font = "40px Montserrat, sans-serif";
-      _ctx.fontWeight = "600"; // Semi-bold
-      _ctx.fillText(_name,Cropy + CropW /3 - txtW /2  , Cropy + CropH  + 10);
-      _ctx.font = "36px Montserrat, sans-serif";
-      _ctx.fontWeight = "400"; // Semi-bold
-      _ctx.fillText(_class, Cropy +  CropW /3  - txtW2 /2, Cropy + CropH  + 50  );
+      _ctx.font = " 600 40px Montserrat, sans-serif";
+      _ctx.fillText(_name,Cropy  + CropW /4 - txtW /2  , Cropy + CropH  + 50);
+      _ctx.font = "33px Montserrat, sans-serif";
+
+      _ctx.fillText(_class, Cropy +  CropW /4  - txtW2 /2, Cropy + CropH  + 95  );
 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
