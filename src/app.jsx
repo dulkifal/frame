@@ -19,18 +19,18 @@ var c;
 let bg = new Image();
 
 // frame size
-let DocW = 1080 
-let DocH = 1148 
+let DocW = 4500
+let DocH = 5750
 
 // start point
-let Cropy = 515  
-let Cropx = 430 
+let Cropy = 3300  
+let Cropx = 500 
 
 // // cut size
 // let CropH = 1650
 // let CropW = 1900
-let CropH = 320    
-let CropW = 250  
+let CropH = 1650    
+let CropW = 1650  
 
 export function App(props) {
   let file = document.createElement("input");
@@ -71,7 +71,7 @@ export function App(props) {
       // font  sans-serif for class only with out bold
       
 
-      _ctx.fillStyle = "white";
+      _ctx.fillStyle = "black";
       // upper case each word input 
       let _name = Name.split(" ")
         .map((e) => e.charAt(0).toUpperCase() + e.slice(1))
@@ -89,11 +89,11 @@ export function App(props) {
 // font size and type montrast semi bold
 
 
-      _ctx.font = " 600 34px Montserrat, sans-serif";
-      _ctx.fillText(_name,Cropy  + CropW /4 - txtW /2  , Cropy + CropH  + 50);
-      _ctx.font = "29px Montserrat, sans-serif";
+      _ctx.font = " 600 170px Montserrat, sans-serif";
+      _ctx.fillText(_name,Cropx + CropW + 350    , Cropy + CropH -CropH/3 -30 );
+      _ctx.font = "600 140px Montserrat, sans-serif";
 
-      _ctx.fillText(_class, Cropy +  CropW /4  - txtW2 /2, Cropy + CropH  + 95  );
+      _ctx.fillText(_class, Cropx +  CropW + 350 , Cropy + CropH  + 10- CropH/4  );
 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
@@ -129,7 +129,7 @@ export function App(props) {
       viewport: {
         height: CropH/2 ,
         width: CropW /2,
-        type: "rectangle",
+        type: "circle",
       },
     });
   }
@@ -164,7 +164,7 @@ export function App(props) {
         <div className="Actions">
           {GeneratedData ? (
             <div>
-              <a href={GeneratedData} download="SWEET">
+              <a href={GeneratedData} download="Imama">
                 <button>
                   <AiOutlineDownload size="30" />
                   <span>Download Profile</span>
@@ -181,7 +181,7 @@ export function App(props) {
               />
               <input
                 type="text"
-                placeholder="Position"
+                placeholder="College"
                 onchange={({ target }) => setClass(target.value)}
               /> 
               <button
