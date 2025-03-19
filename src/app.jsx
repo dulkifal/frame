@@ -85,15 +85,15 @@ export function App(props) {
       // _ctx.shadowColor = "black";
 
       // place name and class in center
-      _ctx.textAlign = "center"; 
+      _ctx.textAlign = "left"; 
 // font size and type montrast semi bold
 
 
       _ctx.font = " 600 170px Montserrat, sans-serif";
-      _ctx.fillText(_name,Cropx + CropW + 450    , Cropy + CropH -CropH/3 -30 );
+      _ctx.fillText(_name,Cropx + CropW + 50    , Cropy + CropH -CropH/3 -30 );
       _ctx.font = "600 140px Montserrat, sans-serif";
 
-      _ctx.fillText(_class, Cropx +  CropW + 500 , Cropy + CropH  + 10- CropH/4  );
+      _ctx.fillText(_class, Cropx +  CropW + 50 , Cropy + CropH  + 10- CropH/4  );
 
       setGeneratedData(_canv.toDataURL({ pixelRatio: 3 }));
 
