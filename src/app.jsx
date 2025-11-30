@@ -121,12 +121,12 @@ export function App(props) {
       const nameMaxWidth = CropW +100 ; // allow a bit less padding so text can be larger
       const classMaxWidth = CropW +50 ;
       // Increase start sizes and min sizes so text stays readable
-      const nameFit = fitFontSize(_name || "", 700, "'Nexa Bold', Montserrat, sans-serif", 110, nameMaxWidth, 90);
+      const nameFit = fitFontSize(_name || "", 700, "'Nexa Bold', Montserrat, sans-serif", 80, nameMaxWidth, 70);
       _ctx.font = `700 ${nameFit.size}px 'Nexa Bold', Montserrat, sans-serif`;
       // under the image centered
       _ctx.fillText(_name, centerX, Cropy + CropH + 140);
 
-      const classFit = fitFontSize(_class || "", 700, "'Nexa Bold', Montserrat, sans-serif", 100, classMaxWidth, 80);
+      const classFit = fitFontSize(_class || "", 700, "'Nexa Bold', Montserrat, sans-serif", 70, classMaxWidth, 60);
       _ctx.font = `700 ${classFit.size}px 'Nexa Bold', Montserrat, sans-serif`;
       _ctx.fillText(_class, centerX, Cropy + CropH + 240);
 
