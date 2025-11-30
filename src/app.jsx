@@ -216,7 +216,7 @@ export function App(props) {
               />
               <input
                 type="text"
-                placeholder="Position"
+                placeholder="Position (optional)"
                 onInput={({ target }) => setClass(target.value)}
               /> 
               <button
