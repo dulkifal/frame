@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/* Nexa Bold - served from public folder */
+@font-face {
+  font-family: 'Nexa Bold';
+  src: url('/NexaBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 .hi {
   display: none;
 }
@@ -24,7 +32,8 @@
 
 body {
   margin: 0;
-  font-family: roboto;
+  /* use Nexa Bold as primary display font, fall back to Montserrat/Roboto */
+  font-family: 'Nexa Bold', Montserrat, Roboto, sans-serif;
 }
 .Header {
   display: flex;
